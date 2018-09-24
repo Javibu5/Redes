@@ -17,7 +17,7 @@
  
 int main ( )
 {
-  			int contador = 0;
+  		int contador = 0;
 		/*---------------------------------------------------- 
 			Descriptor del socket y buffer para datos 
 		-----------------------------------------------------*/
@@ -60,9 +60,10 @@ int main ( )
    		----------------------------------------------------------------------*/
 		Servidor.sin_family = AF_INET;
 		Servidor.sin_port = htons(2000);
-		Servidor.sin_addr.s_addr =  inet_addr("172.16.214.20");
+		Servidor.sin_addr.s_addr =  inet_addr("127.0.0.1");
   	 	Longitud_Servidor = sizeof(Servidor);
 	
+		printf("Indica que enviar al servidor\n");
   	 	scanf("%c" , Datos);
 
 
@@ -91,23 +92,28 @@ int main ( )
 					printf("Se ha producido un error en select\n");
 			}
 
-		else if(salida == 0)
-		{
-			printf("Se ha agotado el tiempo\n");
-			int enviado = sendto (Socket_Cliente, (char *) Datos, sizeof(Datos), 0,
-			(struct sockaddr *) &Servidor, Longitud_Servidor);
-				if (enviado < 0)
-    	{
-			printf("Error al solicitar el servicio\n");
+			else if(salida == 0)
+							{
+				printf("Se ha agotado el tiempo\n");
+				contador++;
+				}
+				else
+				{
+					int recibido = recvfrom (Socket_Cliente, (char *)Datos, sizeof(Datos), 0,(struct sockaddr *) &Servidor, &Longitud_Servidor);
+						if (recibido > 0)
+						{
+							int enviado = sendto (Socket_Cliente, (char *) Datos, sizeof(Datos), 0,
+							(struct sockaddr *) &Servidor, Longitud_Servidor);
+								if (enviado < 0)
+    						{
+								printf("Error al solicitar el servicio\n");
+							}
+					}
+
+				}
 		}
-			contador++;
-		}else
-			int recibido = recvfrom (Socket_Cliente, (char *)&Datos, sizeof(Datos), 0,
-			(struct sockaddr *) &Servidor, &Longitud_Servidor);
 		
-		}
-		
-		
+	}
    		
 		
 		close(Socket_Cliente);

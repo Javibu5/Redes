@@ -1,5 +1,5 @@
 //PRACTICA 1 Servidor
-
+#include <string.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -9,7 +9,8 @@
 #include <unistd.h>
 #include <time.h>
 #include <arpa/inet.h>
-
+#include <time.h>
+#include <locale.h>
 
 
 /*
@@ -86,7 +87,7 @@ int main ()
     /* -----------------------------------------------------------------
 			Esperamos la llamada de alg\ufffdn cliente
 		-------------------------------------------------------------------*/
-      	int recibido = recvfrom (Socket_Servidor, datos, sizeof(datos), 0,
+      	int recibido = recvfrom (Socket_Servidor, cadena , sizeof(cadena), 0,
 			(struct sockaddr *) &Cliente, &Longitud_Cliente);
 
 		/* -----------------------------------------------------------------
@@ -97,18 +98,28 @@ int main ()
 			/*-----------------------------------------------------------------
 				Incrementamos el valor que nos ha enviado el cliente 
 				------------------------------------------------------------------*/
-      	printf ("Recibido %s\n", datos);
+      	printf ("Recibido %s\n", cadena);
+
+      		if(strcmp(cadena , "DAY")){
+
+      				strftime(datos,80,"%A, %d de %B", stTm);
+
+      				int enviado = sendto (Socket_Servidor, datos, sizeof(datos), 0,
+			(struct sockaddr *) &Cliente, Longitud_Cliente);
+      		}
 
       		if(strcmp(datos , "DAY")){
-      				
+
+      				strftime(datos,80,"%A, %d de %B", stTm);
+
+      				int enviado = sendto (Socket_Servidor, datos, sizeof(datos), 0,
+				(struct sockaddr *) &Cliente, Longitud_Cliente);
       		}
 
       
       	/* ------------------------------------------------------------------
 				Devolvemos el n\ufffdmero incrementado al cliente
 				--------------------------------------------------------------------*/
-			int enviado = sendto (Socket_Servidor, datos, sizeof(datos), 0,
-			(struct sockaddr *) &Cliente, Longitud_Cliente);
 
 		}
 

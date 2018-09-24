@@ -1,19 +1,22 @@
-#include<stdio.h>
-#include<time.h>
+#include <stdio.h>
+#include <time.h>
+#include <locale.h>
 
-main(){
+int main(){
 
 	time_t tiempo;
 	struct tm * stTm;
 	char cadena [80];
 	
 	tiempo = time(NULL);
+
+	setlocale(LC_ALL,"");
 	
 	stTm = localtime(&tiempo);
 
-	strftime(cadena,80,"%A, %d de %B", stTm);
+	strftime(cadena,80,"%A, %d de %B ", stTm);
 	
-	printf("Cadena: %s", cadena);
+	printf("Cadena: %s \n", cadena);
 	
 	/*FORMATOS PARA USAR CON LA ESTRUCTURA stTm
 	%B - nombre del mes completo (January, ...)
@@ -28,6 +31,6 @@ main(){
 	%S- segundos en dos dígitos
 	%Y - nos devuelve el año en cuatro dígitos*/
 	
-
+	return 0;
 
 }
