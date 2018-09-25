@@ -10,7 +10,7 @@
 
 /* --------------------------------------------------------------------------------------
  
- Envía un número aleatorio al servidor, quien el devuelve el número incremetnado
+ EnvÃ­a un nÃºmero aleatorio al servidor, quien el devuelve el nÃºmero incremetnado
 
 ---------------------------------------------------------------------------------------- */
  
@@ -56,7 +56,7 @@ int main ( )
 		------------------------------------------------------------------------ */
    	srand (time(NULL)); /* Semilla para n\ufffdmeros aleatorios */
    	Datos = rand()%20;  /* Aleatorio entre 0 y 19 */
-   	printf ("guillermo hijo de puta", Datos);
+   	printf ("guillermo ", Datos);
 
    	
 		/*-----------------------------------------------------------------------

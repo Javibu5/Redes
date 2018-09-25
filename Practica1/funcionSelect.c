@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include<time.h>
-#include<sys/socket.h>
+#include <stdio.h>
+#include <time.h>
+#include <sys/socket.h>
 
 main(){
 

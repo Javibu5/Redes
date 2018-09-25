@@ -23,13 +23,13 @@ int main(){
 	%b - nombre del mes abreviado (Jan, ...)
 	%A -  nombre de la semana completo (Sundey, ...)
 	%a - nombre de la semana abreviado (Sun, ....)
-	%d - día del mes en dos dígitos (01-31)
-	%m - el mes en dos dígitos (01-12)
+	%d - dÃ­a del mes en dos dÃ­gitos (01-31)
+	%m - el mes en dos dÃ­gitos (01-12)
 	%D  - fecha en formato %m/%d/%y
-	%H - hora en dos dígitos (00-23)
-	%M - minutos en dos dígitos
-	%S- segundos en dos dígitos
-	%Y - nos devuelve el año en cuatro dígitos*/
+	%H - hora en dos dÃ­gitos (00-23)
+	%M - minutos en dos dÃ­gitos
+	%S- segundos en dos dÃ­gitos
+	%Y - nos devuelve el aÃ±o en cuatro dÃ­gitos*/
 	
 	return 0;
 

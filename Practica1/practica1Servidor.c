@@ -87,7 +87,7 @@ int main ()
     /* -----------------------------------------------------------------
 			Esperamos la llamada de alg\ufffdn cliente
 		-------------------------------------------------------------------*/
-      	int recibido = recvfrom (Socket_Servidor, cadena , sizeof(cadena), 0,
+      	int recibido = recvfrom (Socket_Servidor,(char *) cadena , sizeof(cadena), 0,
 			(struct sockaddr *) &Cliente, &Longitud_Cliente);
 
 		/* -----------------------------------------------------------------
@@ -104,19 +104,11 @@ int main ()
 
       				strftime(datos,80,"%A, %d de %B", stTm);
 
-      				int enviado = sendto (Socket_Servidor, datos, sizeof(datos), 0,
+      				int enviado = sendto (Socket_Servidor, (char *)datos, sizeof(datos), 0,
 			(struct sockaddr *) &Cliente, Longitud_Cliente);
       		}
 
-      		if(strcmp(datos , "DAY")){
-
-      				strftime(datos,80,"%A, %d de %B", stTm);
-
-      				int enviado = sendto (Socket_Servidor, datos, sizeof(datos), 0,
-				(struct sockaddr *) &Cliente, Longitud_Cliente);
-      		}
-
-      
+      		
       	/* ------------------------------------------------------------------
 				Devolvemos el n\ufffdmero incrementado al cliente
 				--------------------------------------------------------------------*/

@@ -64,7 +64,7 @@ int main ( )
   	 	Longitud_Servidor = sizeof(Servidor);
 	
 		printf("Indica que enviar al servidor\n");
-  	 	scanf("%c" , Datos);
+		fgets(Datos , 80 , stdin);
 
 
    	
